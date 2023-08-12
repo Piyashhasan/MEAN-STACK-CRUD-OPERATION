@@ -1,0 +1,81 @@
+<div class="container">
+  <div class="form_container mx-auto">
+    <form [formGroup]="studentInfoForm">
+      <div class="mb-3">
+        <input
+          [(ngModel)]="name"
+          formControlName="name"
+          type="text"
+          class="form-control"
+          placeholder="Name"
+        />
+      </div>
+      <div class="mb-3">
+        <input
+          [(ngModel)]="address"
+          formControlName="address"
+          type="text"
+          class="form-control"
+          placeholder="Address"
+        />
+      </div>
+      <div class="mb-3">
+        <input
+          [(ngModel)]="phone"
+          formControlName="phone"
+          type="text"
+          class="form-control"
+          placeholder="Phone"
+        />
+      </div>
+      <div class="mb-3">
+        <button
+          (click)="save()"
+          [disabled]="studentInfoForm.invalid"
+          type="submit"
+          class="btn btn-primary"
+        >
+          Submit
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="container mt-5">
+  <h5 class="text-secondary">--- Student Table ---</h5>
+  <div class="table_container mt-3 mx-5 ">
+    <table class="table table-striped ">
+      <thead class="text-center">
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Address</th>
+          <th scope="col">Phone</th>
+          <th scope="col">Option</th>
+        </tr>
+      </thead>
+      <!-- {{studentsArray |json}} -->
+      <tbody class="">
+        <tr *ngFor="let student of studentsArray" class="text-center">
+          <td>{{ student.name }}</td>
+          <td>{{ student.address }}</td>
+          <td>{{ student.phone }}</td>
+          <button (click)="delete(student._id)" class="btn bg-danger mx-3 mt-2">
+            Delete
+          </button>
+          <button (click)="setUpdate(student)" class="btn bg-success mt-2">
+            Update
+          </button>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- <div class="mt-5 container">
+  <div>
+    <p>{{value}}</p>
+  </div>
+  <button (click)="inc()"  (click)="checkUp()" class="btn btn-primary">Inc</button>
+  <button (click)="dec()" (click)="checkUp()" class="btn btn-danger">Dec</button>
+</div> -->
